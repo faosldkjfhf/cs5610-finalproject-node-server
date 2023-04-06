@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/faosldkjfhf/cs5610-finalproject-node-server#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "axios": "^1.3.5",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
   }
 }
