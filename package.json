@@ -1,0 +1,24 @@
+{
+  "type": "module",
+  "name": "cs5610-finalproject-node-server",
+  "version": "1.0.0",
+  "description": "Node server for CS5610 final project at Northeastern University",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faosldkjfhf/cs5610-finalproject-node-server.git"
+  },
+  "author": "Kevin Liu, Daniel Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faosldkjfhf/cs5610-finalproject-node-server/issues"
+  },
+  "homepage": "https://github.com/faosldkjfhf/cs5610-finalproject-node-server#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
