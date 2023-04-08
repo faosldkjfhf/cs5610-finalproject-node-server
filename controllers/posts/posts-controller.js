@@ -14,15 +14,15 @@ const createPost = async (req, res) => {
 }
 
 const updatePost = async (req, res) => {
-    const postIdToDelete = req.params.pid;
-    const status = await postsDao.deletePost(postIdToDelete);
+    const postIdToUpdate = req.params.pid;
+    const updates = req.body;
+    const status = await postsDao.updatePost(postIdToUpdate, updates);
     res.json(status);
 }
 
 const deletePost = async (req, res) => {
-    const postIdToUpdate = req.params.pid;
-    const updates = req.body;
-    const status = await postsDao.updatePost(postIdToUpdate, updates);
+    const postIdToDelete = req.params.pid;
+    const status = await postsDao.deletePost(postIdToDelete);
     res.json(status);
 }
 
