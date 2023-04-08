@@ -6,15 +6,24 @@ const findPosts = async (req, res) => {
 }
 
 const createPost = async (req, res) => {
-
+    const newPost = req.body;
+    newPost.likes = 0;
+    newPost.liked = false;
+    const insertedPost = await postsDao.createPost(newPost);
+    res.json(insertedPost);
 }
 
 const updatePost = async (req, res) => {
-
+    const postIdToDelete = req.params.pid;
+    const status = await postsDao.deletePost(postIdToDelete);
+    res.json(status);
 }
 
 const deletePost = async (req, res) => {
-
+    const postIdToUpdate = req.params.pid;
+    const updates = req.body;
+    const status = await postsDao.updatePost(postIdToUpdate, updates);
+    res.json(status);
 }
 
 const PostsController = (app) => {
