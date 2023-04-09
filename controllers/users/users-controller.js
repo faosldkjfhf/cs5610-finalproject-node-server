@@ -16,9 +16,9 @@ const UsersController = (app) => {
     };
 
     const createUser = async (req, res) => {
-        const user = { ...req.body, _id: new Date().getTime() + "" };
-        users.push(user);
-        res.json(user);
+        const user = req.body;
+        const newUser = await usersDao.createUser(user);
+        res.json(newUser);
     };
 
     const updateUser = async (req, res) => {
@@ -30,26 +30,24 @@ const UsersController = (app) => {
 
     const deleteUser = async (req, res) => {
         const userId = req.params.userId;
-        const index = users.findIndex((user) => user._id === userId);
+        const index = await usersDao.deleteUser(userId);
         if (index === -1) {
             res.sendStatus(404);
             return;
         }
-        users.splice(index, 1);
         res.sendStatus(200);
     };
 
     const register = async (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
-        const user = users.find((user) => user.username === username);
+        const user = await usersDao.findUserByCredentials(username, password);
         if (user) {
             res.sendStatus(409);
             return;
         }
-        const newUser = { username, password, _id: new Date().getTime() + "" };
+        const newUser = await usersDao.createUser(req.body);
         req.session["currentUser"] = newUser;
-        users.push(newUser);
         res.json(newUser);
     };
 
@@ -75,7 +73,6 @@ const UsersController = (app) => {
         res.json(req.session["currentUser"]);
     });
     app.post("/api/users/logout", async (req, res) => {
-        // currentUser = null;
         req.session.destroy();
         res.sendStatus(200);
     });
