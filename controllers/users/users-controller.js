@@ -41,12 +41,18 @@ const UsersController = (app) => {
     const register = async (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
+        if (username === "" || password === "") {
+            res.sendStatus(404);
+            return;
+        }
         const user = await usersDao.findUserByCredentials(username, password);
         if (user) {
+            console.log("old user");
             res.sendStatus(409);
             return;
         }
         const newUser = await usersDao.createUser(req.body);
+        console.log("new user");
         req.session["currentUser"] = newUser;
         res.json(newUser);
     };
