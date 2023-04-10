@@ -41,10 +41,6 @@ const UsersController = (app) => {
     const register = async (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
-        if (username === "" || password === "") {
-            res.sendStatus(404);
-            return;
-        }
         const user = await usersDao.findUserByCredentials(username, password);
         if (user) {
             console.log("old user");
