@@ -17,6 +17,17 @@ const UsersController = (app) => {
 
     const createUser = async (req, res) => {
         const user = req.body;
+        user.username = req.body.username;
+        user.password = req.body.password;
+        user.role = "user";
+        user.followers = 0;
+        user.following = 0;
+        user.posts = 0;
+        user.reviews = 0;
+        user.bio = "";
+        user.profilePic = "catjam.jpg"; //add a default profile pic
+        user.bannerPic = "catjam.jpg"; //add a default banner pic
+        user.website = "";
         const newUser = await usersDao.createUser(user);
         res.json(newUser);
     };

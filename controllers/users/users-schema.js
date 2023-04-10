@@ -8,12 +8,19 @@ const usersSchema = new mongoose.Schema(
         lastName: String,
         dob: Date,
         email: String,
-        isAdmin: { type: Boolean, default: false },
         role: {
             type: String,
             default: "user",
             enum: ["admin", "user", "guest", "artist"]
-        }
+        },
+        followers: Number,
+        following: Number,
+        posts: Number,
+        reviews: Number,
+        bio: String,
+        profilePic: String,
+        bannerPic: String,
+        website: String,
     },
     { collection: "users" }
 );
