@@ -7,7 +7,7 @@ const usersSchema = new mongoose.Schema(
         firstName: String,
         lastName: String,
         dob: Date,
-        email: String,
+        email: { type: String, unique: true, required: true },
         role: {
             type: String,
             default: "user",
@@ -18,8 +18,9 @@ const usersSchema = new mongoose.Schema(
         posts: Number,
         reviews: Number,
         bio: String,
-        profilePic: String,
-        bannerPic: String,
+        avatar: String,
+        banner: String,
+        handle: { type: String, required: true, unique: true },
         website: String,
     },
     { collection: "users" }

@@ -17,18 +17,8 @@ const UsersController = (app) => {
 
     const createUser = async (req, res) => {
         const user = req.body;
-        user.username = req.body.username;
-        user.password = req.body.password;
         user.role = "user";
-        user.followers = 0;
-        user.following = 0;
-        user.posts = 0;
-        user.reviews = 0;
-        user.bio = "";
-        user.profilePic = "catjam.jpg"; //add a default profile pic
-        user.bannerPic = "catjam.jpg"; //add a default banner pic
-        user.website = "";
-        const newUser = await usersDao.createUser(user);
+        const newUser = await usersDao.createUser(user)
         res.json(newUser);
     };
 
@@ -49,7 +39,7 @@ const UsersController = (app) => {
         res.sendStatus(200);
     };
 
-    const register = async (req, res) => {
+    app.post("/api/users/register", async (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
         const user = await usersDao.findUserByCredentials(username, password);
@@ -58,13 +48,18 @@ const UsersController = (app) => {
             res.sendStatus(409);
             return;
         }
-        const newUser = await usersDao.createUser(req.body);
-        console.log("new user");
-        req.session["currentUser"] = newUser;
-        res.json(newUser);
-    };
+        try {
+            const newUser = await usersDao.createUser(req.body);
+            console.log("new user");
+            req.session["currentUser"] = newUser;
+            res.json(newUser);
+        }
+        catch (error) {
+            res.sendStatus(404);
+        }
 
-    app.post("/api/users/register", register);
+    });
+
     app.post("/api/users/login", async (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
@@ -78,6 +73,7 @@ const UsersController = (app) => {
             res.sendStatus(404);
         }
     });
+
     app.post("/api/users/profile", async (req, res) => {
         if (!req.session["currentUser"]) {
             res.sendStatus(404);
@@ -85,6 +81,7 @@ const UsersController = (app) => {
         }
         res.json(req.session["currentUser"]);
     });
+
     app.post("/api/users/logout", async (req, res) => {
         req.session.destroy();
         res.sendStatus(200);

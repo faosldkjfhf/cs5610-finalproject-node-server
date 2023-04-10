@@ -12,7 +12,7 @@ const createPost = async (req, res) => {
     newPost.reposts = 0;
     newPost.reposted = false;
     newPost.type = "post";
-    newPost.user = req.session.user._id;
+    console.log(newPost);
     const insertedPost = await postsDao.createPost(newPost);
     res.json(insertedPost);
 }

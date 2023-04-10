@@ -3,13 +3,15 @@ const schema = mongoose.Schema({
     post: String,
     likes: Number,
     liked: Boolean,
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     type: {
         type: String,
         default: "post",
         enum: ["post", "repost", "review"]
     },
+    handle: String,
     reposts: Number,
     reposted: Boolean,
+    avatar: String,
+    username: String,
 }, { collection: 'posts' });
 export default schema;
