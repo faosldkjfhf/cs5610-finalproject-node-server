@@ -1,6 +1,7 @@
 import express from "express";
 import PostsController from "./controllers/posts/posts-controller.js";
 import UsersController from "./controllers/users/users-controller.js";
+import ReviewsController from "./controllers/reviews/reviews-controller.js";
 import SessionController from "./session-controller.js";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -30,6 +31,7 @@ app.use(
 
 PostsController(app);
 UsersController(app);
+ReviewsController(app);
 SessionController(app);
 const CONNECTION_STRING = process.env.SF_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/symfolio';
 console.log(CONNECTION_STRING);
