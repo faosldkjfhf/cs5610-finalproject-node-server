@@ -4,7 +4,8 @@ const reviewsSchema = new mongoose.Schema(
     {
         review: { type: String, required: true },
         score: Number,
-        userId: { type: mongoose.Types.ObjectId }
+        userId: { type: mongoose.Types.ObjectId },
+        albumId: String
     },
     { collection: "reviews" }
 );
