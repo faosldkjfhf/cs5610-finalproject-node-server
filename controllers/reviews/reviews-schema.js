@@ -3,8 +3,10 @@ import mongoose from "mongoose";
 const reviewsSchema = new mongoose.Schema(
     {
         review: { type: String, required: true },
-        score: Number,
-        userId: { type: mongoose.Types.ObjectId },
+        score: { type: Number, required: true },
+        userId: { type: mongoose.Types.ObjectId, unique: true },
+        username: String,
+        handle: String,
         albumId: String
     },
     { collection: "reviews" }

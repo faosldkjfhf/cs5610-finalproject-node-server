@@ -30,14 +30,24 @@ const deleteReview = async (req, res) => {
 
 const createReview = async (req, res) => {
     const review = req.body;
-    const insertedReview = await reviewsDao.createReview(review);
-    res.json(insertedReview);
+    try {
+        const insertedReview = await reviewsDao.createReview(review);
+        res.json(insertedReview);
+    }
+    catch (error) {
+        if (error.code === 11000) {
+            res.sendStatus(409);
+        }
+        else {
+            res.sendStatus(404);
+        }
+    }
 }
 
 const ReviewsController = (app) => {
     app.get('/api/reviews', findReviews);
     // app.get('/api/reviews/:uid', findReviewsFromUser);
-    app.get('/api/review/:aid', findReviewsByAlbum);
+    app.get('/api/reviews/:aid', findReviewsByAlbum);
     app.post('/api/reviews', createReview);
     app.put('/api/reviews/:rid', updateReview);
     app.delete('/api/reviews/:rid', deleteReview);
