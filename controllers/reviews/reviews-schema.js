@@ -7,7 +7,8 @@ const reviewsSchema = new mongoose.Schema(
         userId: { type: mongoose.Types.ObjectId, unique: true },
         username: String,
         handle: String,
-        albumId: String
+        albumId: String,
+        albumName: String
     },
     { collection: "reviews" }
 );
