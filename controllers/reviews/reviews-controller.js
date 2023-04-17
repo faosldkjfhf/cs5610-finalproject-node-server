@@ -5,10 +5,10 @@ const findReviews = async (req, res) => {
     res.json(reviews);
 }
 
-// const findReviewsFromUser = async (req, res) => {
-//     const reviews = await reviewsDao.findReviewsFromUser(req.params.uid);
-//     res.json(reviews);
-// }
+const findReviewsByUser = async (req, res) => {
+    const reviews = await reviewsDao.findReviewsByUser(req.params.uid);
+    res.json(reviews);
+}
 
 const findReviewsByAlbum = async (req, res) => {
     const reviews = await reviewsDao.findReviewsByAlbum(req.params.aid);
@@ -46,8 +46,8 @@ const createReview = async (req, res) => {
 
 const ReviewsController = (app) => {
     app.get('/api/reviews', findReviews);
-    // app.get('/api/reviews/:uid', findReviewsFromUser);
-    app.get('/api/reviews/:aid', findReviewsByAlbum);
+    app.get('/api/reviews/user/:uid', findReviewsByUser);
+    app.get('/api/reviews/album/:aid', findReviewsByAlbum);
     app.post('/api/reviews', createReview);
     app.put('/api/reviews/:rid', updateReview);
     app.delete('/api/reviews/:rid', deleteReview);
