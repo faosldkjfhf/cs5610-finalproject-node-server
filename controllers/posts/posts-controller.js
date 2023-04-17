@@ -5,6 +5,11 @@ const findPosts = async (req, res) => {
     res.json(posts);
 }
 
+const findPostsByUser = async (req, res) => {
+    const posts = await postsDao.findPostsByUser(req.params.uid);
+    res.json(posts);
+}
+
 const createPost = async (req, res) => {
     const newPost = req.body;
     newPost.likes = 0;
@@ -32,6 +37,7 @@ const deletePost = async (req, res) => {
 
 const PostsController = (app) => {
     app.get('/api/posts', findPosts);
+    app.get('/api/posts/:uid', findPostsByUser);
     app.post('/api/posts', createPost);
     app.put('/api/posts/:pid', updatePost);
     app.delete('/api/posts/:pid', deletePost);

@@ -13,5 +13,6 @@ const schema = mongoose.Schema({
     reposted: Boolean,
     avatar: String,
     username: String,
+    userId: mongoose.Types.ObjectId
 }, { collection: 'posts' });
 export default schema;
