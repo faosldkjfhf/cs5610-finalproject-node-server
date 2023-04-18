@@ -8,7 +8,8 @@ const reviewsSchema = new mongoose.Schema(
         username: String,
         handle: String,
         albumId: String,
-        albumName: String
+        albumName: String,
+        albumMainArtist: String,
     },
     { collection: "reviews" }
 );
