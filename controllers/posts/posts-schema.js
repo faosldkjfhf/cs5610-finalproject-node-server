@@ -9,6 +9,7 @@ const schema = mongoose.Schema({
         enum: ["post", "repost", "review"]
     },
     handle: String,
+    comments: Number,
     reposts: Number,
     reposted: Boolean,
     avatar: String,

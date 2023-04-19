@@ -10,7 +10,7 @@ const commentsSchema = new mongoose.Schema(
         likes: Number,
         liked: Boolean,
     },
-    { collection: "reviews" }
+    { collection: "comments" }
 );
 
 export default commentsSchema;
