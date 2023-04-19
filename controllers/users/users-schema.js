@@ -22,6 +22,8 @@ const usersSchema = new mongoose.Schema(
         banner: String,
         handle: { type: String, required: true, unique: true },
         website: String,
+        liked: Array,
+        resposts: Array
     },
     { collection: "users" }
 );

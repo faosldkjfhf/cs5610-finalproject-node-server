@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const schema = mongoose.Schema({
     post: String,
     likes: Number,
-    liked: Boolean,
+    likeUsers: Array,
     type: {
         type: String,
         default: "post",
@@ -11,7 +11,7 @@ const schema = mongoose.Schema({
     handle: String,
     comments: Number,
     reposts: Number,
-    reposted: Boolean,
+    repostUsers: Array,
     avatar: String,
     username: String,
     userId: mongoose.Types.ObjectId
