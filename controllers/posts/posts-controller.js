@@ -18,10 +18,7 @@ const findPostById = async (req, res) => {
 const createPost = async (req, res) => {
     const newPost = req.body;
     newPost.likes = 0;
-    newPost.liked = false;
     newPost.reposts = 0;
-    newPost.reposted = false;
-    newPost.type = "post";
     console.log(newPost);
     const insertedPost = await postsDao.createPost(newPost);
     res.json(insertedPost);
