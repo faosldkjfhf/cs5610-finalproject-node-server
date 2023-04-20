@@ -13,8 +13,8 @@ const usersSchema = new mongoose.Schema(
             default: "user",
             enum: ["admin", "user", "guest", "artist"]
         },
-        followers: Number,
-        following: Number,
+        followers: Array,
+        following: Array,
         posts: Number,
         reviews: Number,
         bio: String,
@@ -22,8 +22,9 @@ const usersSchema = new mongoose.Schema(
         banner: String,
         handle: { type: String, required: true, unique: true },
         website: String,
-        liked: Array,
-        resposts: Array
+        likes: Array,
+        reposts: Array,
+
     },
     { collection: "users" }
 );
