@@ -14,6 +14,7 @@ const schema = mongoose.Schema({
     repostUsers: Array,
     avatar: String,
     username: String,
-    userId: mongoose.Types.ObjectId
+    userId: mongoose.Types.ObjectId,
+    originalPost: mongoose.Types.ObjectId
 }, { collection: 'posts' });
 export default schema;
