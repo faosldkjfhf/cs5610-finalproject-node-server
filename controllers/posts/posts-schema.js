@@ -10,7 +10,7 @@ const schema = mongoose.Schema({
     },
     handle: String,
     comments: Number,
-    reposts: Number,
+    reposts: Array,
     repostUsers: Array,
     avatar: String,
     username: String,
