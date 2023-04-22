@@ -33,9 +33,8 @@ const deleteComment = async (req, res) => {
 }
 
 const updateComment = async (req, res) => {
-    const commentToUpdate = req.params.cid;
-    const updates = req.params.body;
-    const status = await commentsDao.updateComment(commentToUpdate, updates);
+    const updates = req.body;
+    const status = await commentsDao.updateComment(updates._id, updates);
     res.json(status);
 }
 
@@ -44,7 +43,7 @@ const CommentsController = (app) => {
     app.get("/api/comments/posts/:pid", findCommentsByPost);
     app.get("/api/comments/users/:uid", findCommentsByUser);
     app.post("/api/comments", createComment);
-    app.put("/api/comments/:cid", updateComment);
+    app.put("/api/comments", updateComment);
     app.delete("/api/comments/:cid", deleteComment);
 }
 

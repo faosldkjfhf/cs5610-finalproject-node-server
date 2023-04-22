@@ -7,8 +7,8 @@ const commentsSchema = new mongoose.Schema(
         comment: String,
         username: String,
         handle: String,
-        likes: Number,
-        liked: Boolean,
+        likeUsers: Array,
+        likes: Number
     },
     { collection: "comments" }
 );
