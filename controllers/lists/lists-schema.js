@@ -6,7 +6,8 @@ const listsSchema = mongoose.Schema(
         albums: { type: Array, default: [] },
         name: String,
         description: String,
-    }
-)
+    },
+    { collection: "Lists" }
+);
 
 export default listsSchema;
