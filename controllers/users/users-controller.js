@@ -25,8 +25,10 @@ const UsersController = (app) => {
     const updateUser = async (req, res) => {
         const userId = req.params.userId;
         const status = await usersDao.updateUser(userId, req.body);
-        if (req.session["currentUser"]._id === userId) {
-            req.session["currentUser"] = req.body;
+        if (req.session["currentUser"]) {
+            if (req.session["currentUser"]._id === userId) {
+                req.session["currentUser"] = req.body;
+            }
         }
         res.send(status);
     };
