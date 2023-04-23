@@ -8,6 +8,7 @@ import cors from "cors";
 import session from "express-session";
 import dotenv from "dotenv";
 import CommentsController from "./controllers/comments/comments-controller.js";
+import ListsController from "./controllers/lists/lists-controller.js";
 dotenv.config();
 
 const app = express();
@@ -34,6 +35,7 @@ PostsController(app);
 UsersController(app);
 ReviewsController(app);
 CommentsController(app);
+ListsController(app);
 SessionController(app);
 const CONNECTION_STRING = process.env.SF_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/symfolio';
 console.log(CONNECTION_STRING);
