@@ -5,6 +5,11 @@ const findLists = async (req, res) => {
     res.json(lists);
 }
 
+const findListById = async (req, res) => {
+    const lists = await listsDao.findListById(req.params.lid);
+    res.json(lists);
+}
+
 const findListsByUser = async (req, res) => {
     const lists = await listsDao.findListsByUser(req.params.uid);
     res.json(lists);
@@ -27,7 +32,8 @@ const deleteList = async (req, res) => {
 
 const ListsController = (app) => {
     app.get('/api/lists', findLists);
-    app.get('/api/lists/:uid', findListsByUser);
+    app.get('/api/lists/list/:lid', findListById);
+    app.get('/api/lists/user/:uid', findListsByUser);
     app.post('/api/lists', createList);
     app.put('/api/lists', updateList);
     app.delete('/api/lists/:lid', deleteList);
