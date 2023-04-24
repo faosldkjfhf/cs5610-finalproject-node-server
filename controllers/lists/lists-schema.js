@@ -7,7 +7,7 @@ const listsSchema = mongoose.Schema(
         name: String,
         description: String,
     },
-    { collection: "Lists" }
+    { collection: "lists" }
 );
 
 export default listsSchema;
