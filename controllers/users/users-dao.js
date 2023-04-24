@@ -2,6 +2,7 @@ import usersModel from "./users-model.js";
 
 export const findAllUsers = () => usersModel.find();
 export const findUserById = (uid) => usersModel.findById(uid);
+export const searchUsers = (searchString) => usersModel.search(searchString);
 export const findUserByUsername = (username) => usersModel.findOne({ username });
 export const findUserByCredentials = (username, password) => usersModel.findOne({ username, password });
 export const createUser = (user) => usersModel.create(user);

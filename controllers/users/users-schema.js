@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
+import searchable from "mongoose-regex-search";
 
 const usersSchema = new mongoose.Schema(
     {
-        username: { type: String, unique: true, required: true },
+        username: { type: String, unique: true, required: true, searchable: true },
         password: { type: String, required: true },
-        firstName: String,
-        lastName: String,
+        firstName: { type: String, searchable: true },
+        lastName: { type: String, searchable: true },
         dob: Date,
         email: { type: String, unique: true, required: true },
         role: {
@@ -20,7 +21,7 @@ const usersSchema = new mongoose.Schema(
         bio: String,
         avatar: String,
         banner: String,
-        handle: { type: String, required: true, unique: true },
+        handle: { type: String, required: true, unique: true, searchable: true },
         website: String,
         likes: Array,
         reposts: Array,
@@ -28,5 +29,7 @@ const usersSchema = new mongoose.Schema(
     },
     { collection: "users" }
 );
+
+usersSchema.plugin(searchable);
 
 export default usersSchema;

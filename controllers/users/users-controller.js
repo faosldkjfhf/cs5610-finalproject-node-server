@@ -15,6 +15,11 @@ const UsersController = (app) => {
         res.sendStatus(404);
     };
 
+    const searchUsers = async (req, res) => {
+        const results = await usersDao.searchUsers(req.params.search)
+        res.json(results);
+    }
+
     const createUser = async (req, res) => {
         const user = req.body;
         user.role = "user";
@@ -92,6 +97,7 @@ const UsersController = (app) => {
     });
 
     app.get("/api/users", findAllUsers);
+    app.get("/api/users/search/:search", searchUsers);
     app.get("/api/users/:userId", findUserById);
     app.post("/api/users", createUser);
     app.put("/api/users/:userId", updateUser);
