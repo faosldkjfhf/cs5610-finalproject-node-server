@@ -25,7 +25,7 @@ const usersSchema = new mongoose.Schema(
         website: String,
         likes: Array,
         reposts: Array,
-
+        artistId: { type: String, default: "" }
     },
     { collection: "users" }
 );
