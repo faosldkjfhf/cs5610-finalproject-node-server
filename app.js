@@ -27,7 +27,7 @@ app.use(
 app.use(
     cors({
         credentials: true,
-        origin: "https://symfolio.co",
+        origin: "https://symfolio.co/",
     })
 );
 
