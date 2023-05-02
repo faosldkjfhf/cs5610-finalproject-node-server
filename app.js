@@ -20,14 +20,14 @@ app.use(
         secret: "asdfasdfasdfasdf",
         resave: false,
         saveUninitialized: true,
-        // cookie: { secure: true }, // needs HTTPS
+        cookie: { secure: true }, // needs HTTPS
     })
 );
 
 app.use(
     cors({
         credentials: true,
-        origin: "https://symfolio.co/",
+        origin: "https://symfolio.co",
     })
 );
 
